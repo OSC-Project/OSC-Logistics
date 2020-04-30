@@ -44,13 +44,31 @@
   - distinct terms = Common in sample, uncommon in random sample
 - Scored relevancy of rest of database by occurence of these terms
 
+*** Frequency Analysis
+- Generated frequency distributions over 34 injection CVE
+  - yeilded 294 total monograms, 683 total bigrams
+- Normalization: eliminate symbols, lingustic stemming, remove stopwords
+- Sort by distinctness: (frequency of term in sample set) - (frequency of term in entire set)
+- Manually choose most distinct terms that may indicate whether or not a package is relevant to us
+#+ATTR_LATEX: :width 5cm
+[[./stem.png]]
+
+*** Frequency Analysis cont'd
+- Glossary of monogram terms to test on (12): code, execut, arbitrari, inject, command, sqlite,
+  shell, sequel, sql, waterlin, postgr, mysql
+- Glossary of bigram terms to test on (12): 'arbitrari command', 'command inject',
+'inject vulner', 'a command', 'inject in', 'execut arbitrari', 'to execut',
+'sequel is', 'sqlite and', 'microsoft sql', 'sql server', 'arbitrari code'
+  - Order DOES matter
+
 *** Results From Last Time
-- Monogram Relevancy Test:
-  - Many entries scored highly, suggesting relevant terms were not specific enough
--Bigram Relevancy Test:
-  - Seems more precise(higher relevancy %), but yeilds fewer results
-#+ATTR_LATEX: :width 6cm
-[[./figures/bigram-analysis-results.png]]
+  - Monogram Relevancy Test:
+    - Many entries scored highly, suggesting relevant terms were not specific enough
+  - Bigram Relevancy Test:
+    - Seems more precise(higher relevancy %), but yeilds fewer results
+    - Some bigrams never appeared in test set
+  #+ATTR_LATEX: :width 6cm
+  [[./figures/bigram-analysis-results.png]]
 
 *** Refining Search Method
 - Manually analyze each high-scoring package to determine its relevancy
@@ -60,7 +78,7 @@
 *** Example: CVE-2018-3772
 - Bigram Relevancy Score: 3
 - Entered in Database as CWE-20 (Improper Input Validation)
-- While true, this vulnerability can lead to a Command Injection attack, as mentioned in description:
+- This vulnerability can lead to a Command Injection attack, as mentioned in description:
 #+BEGIN_QUOTE
  "Concatenating unsanitized user input in the `whereis` npm module < 0.4.1 allowed an attacker to execute arbitrary commands.
  The`whereis` module is deprecated and it is recommended to use the `which` npm module instead."
@@ -76,7 +94,7 @@ The static-eval module is intended to evaluate statically-analyzable expressions
 
 ** Bigram Test Summary
 - 11 out of 536 packages scored above 0
-- Upon manual analysis, 3 of the 11 were found to be relevant to the current development of our tool.
+- Upon manual analysis, 3 of the 11 were found to be relevant to the current development of our tool. The other 8 are not relevant to the current development of our tool.
 #+ATTR_LATEX: :width 6cm
 [[./figures/bigram_result_distribution.png]]
 
