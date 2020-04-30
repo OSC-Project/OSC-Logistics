@@ -43,7 +43,7 @@
 - Generated monogram(one-word term) and bigram(two-word term) frequency distributions over 34 injection CVE
 - Decided relevant terms via distinctness
   - distinct terms = Common in sample, uncommon in random sample
-  - Examples: "a", "to" 
+  - Examples: "a", "to"
 - Scored relevancy of rest of database by occurence of these terms
 
 *** Results From Last Time
@@ -66,7 +66,7 @@
   mentioned in the description:
 #+BEGIN_QUOTE
  "Concatenating unsanitized user input in the `whereis` npm module <
- 0.4.1 allowed an attacker to execute arbitrary commands. 
+ 0.4.1 allowed an attacker to execute arbitrary commands.
  The ~whereis~ module is deprecated and it is recommended to use the `which` npm module instead."
 #+END_QUOTE
 
@@ -75,12 +75,12 @@
 - Entered in Database as CWE-20 (Improper Input Validation)
 - Modules intended purpose is to let users make eval calls in a
   sandbox, however poor sanitization allows the user to escape and
-  execute code. 
+  execute code.
 #+BEGIN_QUOTE
 The static-eval module is intended to evaluate statically-analyzable
 expressions. In affected versions, untrusted user input is able to
 access the global function constructor, effectively allowing arbitrary
-code execution. 
+code execution.
 #+END_QUOTE
 
 *** Bigram Test Summary
@@ -106,7 +106,7 @@ code execution.
   - Modularity for easier troubleshooting
 
 *** CodeQL automation capabilities
-- Standardize Folder structure 
+- Standardize Folder structure
 - Applies Query(ies) to JS packages
   - Able to specify versions
   - Automatic extraction of the archives
@@ -130,18 +130,19 @@ code execution.
 - Automatically generates scorecards
 
 *** What's New
-- Working with Kerwin on the LGTM script
-  - Will run our custom queries on a target directory
+- Working with Kerwin on the LGTM automation script
+  - Dowloading and testing tools to our GitHub repo in order to ensure reproducability for everyone
+- Integrating LGTM automation script with the scorecard generation script
 
 *** Next Step
-- Integrating LGTM driver script to use the scorecard generation script
+- Polish and finish off remaining details
 
 * CVE-ID Registration
 *** Where We Left Off
 - Emailed ~cve-request@iojs.org~
 - Submitted info requesting CVE-IDs for  packages
-    - Jade, 
-    - Depot, and 
+    - Jade,
+    - Depot, and
     - PrototypeJS
 
 *** What's New
