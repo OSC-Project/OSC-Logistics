@@ -37,11 +37,13 @@
              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 #+end_src
 
+
 * CVE Classification
 *** Last Time
 - Generated monogram(one-word term) and bigram(two-word term) frequency distributions over 34 injection CVE
 - Decided relevant terms via distinctness
   - distinct terms = Common in sample, uncommon in random sample
+  - Examples: "a", "to"
 - Scored relevancy of rest of database by occurence of these terms
 
 *** Frequency Analysis
@@ -62,37 +64,44 @@
   - Order DOES matter
 
 *** Results From Last Time
-  - Monogram Relevancy Test:
-    - Many entries scored highly, suggesting relevant terms were not specific enough
-  - Bigram Relevancy Test:
-    - Seems more precise(higher relevancy %), but yeilds fewer results
-    - Some bigrams never appeared in test set
-  #+ATTR_LATEX: :width 6cm
-  [[./figures/bigram-analysis-results.png]]
+- Monogram Relevancy Test:
+  - Many entries scored highly, suggesting relevant terms were not specific enough
+- Bigram Relevancy Test:
+  - Seems more precise(higher relevancy %), but yeilds fewer results
+  - Some bigrams never appeared in test set
+#+ATTR_LATEX: :width 6cm
+[[./figures/bigram-analysis-results.png]]
 
 *** Refining Search Method
-- Manually analyze each high-scoring package to determine its relevancy
+- Manually analyze each high-scoring package to determine relevancy
   - Start with Bigram test results, move to monogram tests
   - Relevant CVEs will be added to sample set
 
 *** Example: CVE-2018-3772
 - Bigram Relevancy Score: 3
 - Entered in Database as CWE-20 (Improper Input Validation)
-- This vulnerability can lead to a Command Injection attack, as mentioned in description:
+- This vulnerability indeed leads to a Command Injection attack, as
+  mentioned in the description:
 #+BEGIN_QUOTE
- "Concatenating unsanitized user input in the `whereis` npm module < 0.4.1 allowed an attacker to execute arbitrary commands.
- The`whereis` module is deprecated and it is recommended to use the `which` npm module instead."
+ "Concatenating unsanitized user input in the `whereis` npm module <
+ 0.4.1 allowed an attacker to execute arbitrary commands.
+ The ~whereis~ module is deprecated and it is recommended to use the `which` npm module instead."
 #+END_QUOTE
 
 *** Example: CVE-2019-15657
 - Bigram Relevancy Score: 1
 - Entered in Database as CWE-20 (Improper Input Validation)
-- Modules intended purpose is to let users make eval calls in a sandbox, however poor sanitization allows the user to escape and execute code.
+- Modules intended purpose is to let users make eval calls in a
+  sandbox, however poor sanitization allows the user to escape and
+  execute code.
 #+BEGIN_QUOTE
-The static-eval module is intended to evaluate statically-analyzable expressions. In affected versions, untrusted user input is able to access the global function constructor, effectively allowing arbitrary code execution.
+The static-eval module is intended to evaluate statically-analyzable
+expressions. In affected versions, untrusted user input is able to
+access the global function constructor, effectively allowing arbitrary
+code execution.
 #+END_QUOTE
 
-** Bigram Test Summary
+*** Bigram Test Summary
 - 11 out of 536 packages scored above 0
 - Upon manual analysis, 3 of the 11 were found to be relevant to the current development of our tool. The other 8 are not relevant to the current development of our tool.
 #+ATTR_LATEX: :width 6cm
@@ -105,8 +114,8 @@ The static-eval module is intended to evaluate statically-analyzable expressions
 
 
 * LGTM
-+*** What's New
-- Major Advancement in automation for CodeQL
+*** What's New
+- Major Advancement in automation for ~CodeQL~
 - Why?
   - "Feed two birds with one scone"
   - Free up resources to focus on expanding set of queries
@@ -114,11 +123,11 @@ The static-eval module is intended to evaluate statically-analyzable expressions
   - reduce operation time for evaluating query performance and JS packages
   - Modularity for easier troubleshooting
 
-*** CodeQL automation capablities
-- Set up uniform File-Directory structure for easier troubleshooting and accessiblity
+*** CodeQL automation capabilities
+- Standardize Folder structure
 - Applies Query(ies) to JS packages
   - Able to specify versions
-  - If you do not have the package, it will extract it for you automatically
+  - Automatic extraction of the archives
 - Groups different versions of packages together
 - Sets up CodeQL Databases, query compliation, and run the query automatically
 - Able to clean and reconstruct CodeQL Databases for optimal disk management and to avoid dependencies issues
@@ -135,22 +144,24 @@ The static-eval module is intended to evaluate statically-analyzable expressions
 *** Where We Left Off
 - Build a JavaScript benchmark library with synthetic examples to mimic OWASP's benchmarks
 - Tests are either a true or false positive
-- Currently 9 benchmarks:
+- Currently 9 benchmarks
 - Automatically generates scorecards
 
-
 *** What's New
-- Working with Kerwin on the LGTM script
-  - Will run our custom quieres on a target directory
-
+- Working with Kerwin on the LGTM automation script
+  - Dowloading and testing tools to our GitHub repo in order to ensure reproducability for everyone
+- Integrating LGTM automation script with the scorecard generation script
 
 *** Next Step
-- Integrating LGTM driver script to use the scorecard generation script
+- Polish and finish off remaining details
 
 * CVE-ID Registration
 *** Where We Left Off
-- Emailed cve-request@iojs.org
-- Submitted info requesting CVE-IDs for Jade, Depot, and PrototypeJS packages
+- Emailed ~cve-request@iojs.org~
+- Submitted info requesting CVE-IDs for  packages
+    - Jade,
+    - Depot, and
+    - PrototypeJS
 
 *** What's New
 - Continuing the process for submitting a CVE-ID request
