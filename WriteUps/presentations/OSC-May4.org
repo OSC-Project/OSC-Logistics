@@ -142,9 +142,8 @@ The static-eval module is intended to evaluate statically-analyzable expressions
 
 * Summary
 *** What We Have Done So Far
-- Use Bigram analysis along with manual analysis in highest scoring cves
-- Got the CLI for LGTM to work and using custom queries
-- Created a scorescard to assess tool's reliability
-- Submited the vulnerabilties we had found as CVEs
+- Manual analysis on highest scoring cves
+- LGTM automation script for custom queries
+- Uploaded CVEs details for submission
 *** Questions?
 - Questions and Comments?
