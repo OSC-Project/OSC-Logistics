@@ -112,32 +112,56 @@ code execution.
  - Continue manual analysis of high scoring CVEs from monogram analysis.
  - Weighting for distiguishing terms.
 
-
 * LGTM
+*** Where We left off
+- Expand set of queries for Code Injection
+- Analyze the other packages we used the sink finder on
+- Consider possible automation of this process.
+
 *** What's New
 - Major Advancement in automation for ~CodeQL~
-- Why?
-  - "Feed two birds with one scone"
-  - Free up resources to focus on expanding set of queries
-  - Able to analyze other packages faster
-  - reduce operation time for evaluating query performance and JS packages
-  - Modularity for easier troubleshooting
+  -Specifically Integrated Fixed Automation for applying queries to packages
 
-*** CodeQL automation capabilities
+*** Before
+- Manually pack external JS packages onto your PC
+- Manually create a DB for each package
+- Manually update each created DB
+- Manually run Query(ies) to the DB associated with external JS package
+- Manually remove each DB when done
+
+*** Cons:
+- Many tedious steps
+- Have to remember file locations
+- Disk Storage usage goes up quickly
+- Not sufficiently scalable
+- Not streamlined
+
+*** Now (With Automation)
+- Accomplish all these task with one automation script
 - Standardize Folder structure
-- Applies Query(ies) to JS packages
-  - Able to specify versions
-  - Automatic extraction of the archives
-- Groups different versions of packages together
-- Sets up CodeQL Databases, query compliation, and run the query automatically
-- Able to clean and reconstruct CodeQL Databases for optimal disk management and to avoid dependencies issues
+- Disk Management (Store what you only need)
+- Automation is scalable
+- Streamlined, easier to troubleshoot
+
+***Automation Usage
+- Input (Two arguments) 
+  - Package and query (i.e mypackages1.0 myQuery.ql)
+  - For multiple packages or queries, specify .json Ext. in arguments (i.e packages.json queries.json)
+- Output
+  - Three new directories (for external JS packages, CodeQL Databases, and CSV results folder)
+  - Results are in a csv file labeled with the specific query and package combination it analyzes
+- Can run one query against multiple packages or multiple queries against one package and everything in between 
+
+*** Other benefits
+- Free up our resources to expand set of queries
+- Able to get sinks results(if they exist) faster
+- reduce operation time for evaluating query performance
 
 *** Next Steps
 - Revise documentation
 - Fix edge case bugs
 - Verify query results
 - Expand sets of queries
-
 
 * OSC Benchmark
 
