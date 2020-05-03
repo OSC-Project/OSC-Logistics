@@ -143,7 +143,7 @@ code execution.
 - Automation is scalable
 - Streamlined, easier to troubleshoot
 
-***Automation Usage
+*** Automation Usage
 - Input (Two arguments) 
   - Package and query (i.e mypackages1.0 myQuery.ql)
   - For multiple packages or queries, specify .json Ext. in arguments (i.e packages.json queries.json)
