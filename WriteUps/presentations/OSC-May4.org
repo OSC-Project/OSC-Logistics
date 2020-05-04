@@ -1,4 +1,4 @@
-#+TITLE:     OSC Update
+#+TITLE:     May the $4^{th}$ be with us! ;-)
 #+AUTHOR:    A. Jbara, L. Michel, A. Herzberg, J. Breslin
 #+EMAIL:     ldm@engr.uconn.edu
 #+DATE: \today
@@ -47,7 +47,7 @@
 
 *** Frequency Analysis
 - Generated frequency distributions over 34 injection CVE
-  - yeilded 294 total monograms, 683 total bigrams
+  - yielded 294 total monograms, 683 total bigrams
 - Normalization: eliminate symbols, lingustic stemming, remove stopwords
 - Sort by distinctness: (frequency of term in sample set) - (frequency of term in entire set)
 - Manually choose most distinct terms that may indicate whether or not a package is relevant to us
@@ -55,11 +55,14 @@
 [[./figures/stem.png]]
 
 *** Frequency Analysis cont'd
-- Glossary of monogram terms to test on (12): code, execut, arbitrari, inject, command, sqlite,
-  shell, sequel, sql, waterlin, postgr, mysql
-- Glossary of bigram terms to test on (12): 'arbitrari command', 'command inject',
+- Glossary of monogram terms to test on (12): ~code, execut, arbitrari, inject, command, sqlite,
+  shell, sequel, sql, waterlin, postgr, mysql~
+- Glossary of bigram terms to test on (12): 
+#+LaTeX:\begin{alertblock}{Bigrams}
+'arbitrari command', 'command inject',
 'inject vulner', 'a command', 'inject in', 'execut arbitrari', 'to execut',
 'sequel is', 'sqlite and', 'microsoft sql', 'sql server', 'arbitrari code'
+#+LaTeX:\end{alertblock}
   - Order DOES matter
 
 *** Results From Last Time
@@ -116,41 +119,45 @@ code execution.
 - Expand set of queries for Code Injection
 - Analyze the other packages we used the sink finder on
 - Consider possible automation of this process.
-
+  
 *** What's New
 - Major Advancement in automation for ~CodeQL~
-  - Specifically Integrated Fixed Automation for applying queries to packages
+  - Integrated Automation for applying queries to packages
 
 *** Before
 - Manually 
-    - pack external JS packages onto your PC
+    - download and unpack external JS packages onto your PC
     - create a DB for each package
     - update each created DB
-    - run Query(ies) against the DB associated with external package
+    - run against the DB associated with external package
     - remove each DB when done
 
 *** Downside
-- Many tedious steps
+- Tedious
 - Have to remember file locations
 - Disk Storage usage goes up quickly
 - Not scalable
 - Not streamlined
 
-*** Now (With Automation)
+*** With Automation
 - Accomplish all these task with one script
 - Standardize folder structure
 - Disk management (only store what you need)
 - Scalable
 - Streamlined
 
-*** Automation Usage
-- Input (Two arguments) 
-  - Package and query (i.e mypackages1.0 ~myQuery.ql~)
-  - For multiple packages or queries, specify .json Ext. in arguments (i.e packages.json queries.json)
+*** Usage
+- Input (Two arguments - either direct or ~json~ files) 
+  - Package
+  - Query
 - Output
-  - Three new directories (external JS packages,CodeQL Databases, CSV results folder)
-  - Results are in a csv file labeled with the specific query and package combination it analyzes
-- Can run one query against multiple packages or multiple queries against one package and everything in between
+  - Three new directories
+      - external JS packages
+      - ~QL~ Databases
+      - ~CSV~ results
+#+LaTeX:\begin{alertblock}{Command Line Example}
+~python LGTMAutomation.py mypackages1.0  myQuery.ql~
+#+LaTeX:\end{alertblock}
 
 *** Automation Diagram
 #+ATTR_LATEX: :width 6cm :height 6cm
