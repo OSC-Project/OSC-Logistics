@@ -150,7 +150,10 @@ code execution.
 - Output
   - Three new directories (for external JS packages, CodeQL Databases, and CSV results folder)
   - Results are in a csv file labeled with the specific query and package combination it analyzes
-- Can run one query against multiple packages or multiple queries against one package and everything in between 
+- Can run one query against multiple packages or multiple queries against one package and everything in between
+
+*** Automation Diagram
+[[./figures/AutomationDiagram.png]]
 
 *** Other benefits
 - Free up our resources to expand set of queries
