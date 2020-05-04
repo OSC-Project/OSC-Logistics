@@ -153,7 +153,7 @@ code execution.
 - Can run one query against multiple packages or multiple queries against one package and everything in between
 
 *** Automation Diagram
-#+ATTR_LATEX: :width 7cm
+#+ATTR_LATEX: :width 6cm :height 6cm
 [[./figures/AutomationDiagram.png]]
 
 *** Other benefits
