@@ -37,7 +37,6 @@
              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 #+end_src
 
-
 * CVE Classification
 *** Last Time
 - Generated monogram(one-word term) and bigram(two-word term) frequency distributions over 34 injection CVE
@@ -53,7 +52,7 @@
 - Sort by distinctness: (frequency of term in sample set) - (frequency of term in entire set)
 - Manually choose most distinct terms that may indicate whether or not a package is relevant to us
 #+ATTR_LATEX: :width 5cm
-[[./stem.png]]
+[[./figures/stem.png]]
 
 *** Frequency Analysis cont'd
 - Glossary of monogram terms to test on (12): code, execut, arbitrari, inject, command, sqlite,
@@ -120,35 +119,36 @@ code execution.
 
 *** What's New
 - Major Advancement in automation for ~CodeQL~
-  -Specifically Integrated Fixed Automation for applying queries to packages
+  - Specifically Integrated Fixed Automation for applying queries to packages
 
 *** Before
-- Manually pack external JS packages onto your PC
-- Manually create a DB for each package
-- Manually update each created DB
-- Manually run Query(ies) to the DB associated with external JS package
-- Manually remove each DB when done
+- Manually 
+    - pack external JS packages onto your PC
+    - create a DB for each package
+    - update each created DB
+    - run Query(ies) against the DB associated with external package
+    - remove each DB when done
 
-*** Cons:
+*** Downside
 - Many tedious steps
 - Have to remember file locations
 - Disk Storage usage goes up quickly
-- Not sufficiently scalable
+- Not scalable
 - Not streamlined
 
 *** Now (With Automation)
-- Accomplish all these task with one automation script
-- Standardize Folder structure
-- Disk Management (Store what you only need)
-- Automation is scalable
-- Streamlined, easier to troubleshoot
+- Accomplish all these task with one script
+- Standardize folder structure
+- Disk management (only store what you need)
+- Scalable
+- Streamlined
 
 *** Automation Usage
 - Input (Two arguments) 
-  - Package and query (i.e mypackages1.0 myQuery.ql)
+  - Package and query (i.e mypackages1.0 ~myQuery.ql~)
   - For multiple packages or queries, specify .json Ext. in arguments (i.e packages.json queries.json)
 - Output
-  - Three new directories (for external JS packages, CodeQL Databases, and CSV results folder)
+  - Three new directories (external JS packages,CodeQL Databases, CSV results folder)
   - Results are in a csv file labeled with the specific query and package combination it analyzes
 - Can run one query against multiple packages or multiple queries against one package and everything in between
 
@@ -162,10 +162,9 @@ code execution.
 - reduce operation time for evaluating query performance
 
 *** Next Steps
-- Revise documentation
-- Fix edge case bugs
-- Verify query results
-- Expand sets of queries
+- Author documentation
+- Polish
+- Verify results
 
 * OSC Benchmark
 
