@@ -3,7 +3,7 @@
 This report shows the results of the LGTM query set versus our LGTM++ query set. The SinkFinder's results are also included.
 
 ## Results
-![](./Tools over Packages.png)
+![](./TOPackages.png)
 
 The tools being used are our additional quieries (LGTM++), the built in queries from codeQL (LGTM), and the sinkfinder we've developed previously. The packages were the list of 50 from Comcast (except for 2 that wouldn't compile) and 2 additional packages from cves we found to be relevant. Overall, LGTM++ had the highest true positive rate with the smallest false positive rate. The further from the line on the left side, the better the tool.
 
