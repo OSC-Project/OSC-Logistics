@@ -8,7 +8,7 @@ This report shows the results of the LGTM query set versus our LGTM++ query set.
 The tools being used are our additional queries (LGTM++), the built in queries from codeQL (LGTM), and the SinkFinder we've developed previously. The included packages are:
 
 - the list of 50 from Comcast (except for 2 that wouldn't compile)
-- 3 additional packages from CVEs we found to be relevant. 
+- 3 additional packages from CVEs we found to be relevant.
 
 Overall, LGTM++ had the highest true positive rate with the smallest false positive rate. The further from the line on the left side, the better the tool.
 
@@ -16,13 +16,21 @@ Overall, LGTM++ had the highest true positive rate with the smallest false posit
 
 #### What exactly is in our "Classic Sink Finder" (which ones are missing from LGTM++: Ahmad's question).
 
+
 #### LGTM
 
 List of queries included.
+CodeInjection.ql - LGTM query designated for Code Injection.
+Eval.ql - LGTM query designated for finding Eval.
 
 #### LGTM++
+This is not a superset of LGTM
 
-List of queries included. If these are _NOT_ a superset of LGTM. BE explicit about it.
+list of queries included
+customCodeInjection.ql - Our custom query for finding eval.
+customCodeInjection2.ql - a simplified version of the previous query.
+
+List of queries included. If these are _NOT_ a superset of LGTM. BE explicit about it.  
 
 ## Scoring
 
@@ -30,12 +38,7 @@ Each tool was scored using our benchmark's scorecard generator process. This is 
 
 **Recall formulas for the rates**
 
-true positive rate = TP / (TP+FN)
-false positive rate = FP / (FP + TN)
-
 **How do we count, no duplicates**
-
-Each query result is counted and calculated. If multiple queries are run, results are found and each query will only count if it is different from the previous results.
 
 ## LGTM
 
