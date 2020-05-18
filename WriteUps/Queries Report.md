@@ -14,7 +14,9 @@ Overall, LGTM++ had the highest true positive rate with the smallest false posit
 
 ### Queries
 
-#### What exactly is in our "Classic Sink Finder" (which ones are missing from LGTM++: Ahmad's question).
+#### Classic Sink Finder
+
+AST pattern matching for eval and the obfuscated variants.
 
 
 #### LGTM
@@ -38,29 +40,30 @@ Each tool was scored using our benchmark's scorecard generator process. This is 
 
 **Recall formulas for the rates**
 
+true positive rate = TP / (TP+FN)
+false positive rate = FP / (FP + TN)
+
 **How do we count, no duplicates**
+
+Each query result is counted and calculated. If multiple queries are run, results are found and each query will only count if it is different from the previous results.
 
 ## LGTM
 
-The scorecard is in the repository labeled `LGTM over Packages.csv`. The false positive rate is 0.21, the true positive rate is 0.36, and the corresponding score is 0.14. The queries used are in the json `LGTM.json` and are `CodeInjection.ql` and `Eval.ql`.
+The scorecard is in the repository labeled `LGTM over Packages.csv`. The false positive rate is 0.28, the true positive rate is 0.66, and the corresponding score is 0.28. The queries used are in the json `LGTM.json` and are `CodeInjection.ql` and `Eval.ql`.
 
-| **CWE**               | **TP**     | **FN**     | **TN**      | **FP**      | **Total**            | **TPR**                         | **FPR**                         | **Score**                         |
-| --------------------- | ---------- | ---------- | ----------- | ----------- | -------------------- | ------------------------------- | ------------------------------- | --------------------------------- |
-| **94:Code injection** | 4          | 7          | 84          | 23          | 118                  | 0.36363636363636400             | 0.21495327102803700             | 0.14868309260832600               |
-|                       | Total TP:4 | Total FN:7 | Total TN:84 | Total FP:23 | Total Test Cases:118 | Average TPR:0.36363636363636365 | Average FPR:0.21495327102803738 | Average Score:0.14868309260832627 |
-
-
+| **CWE**               | **TP**     | **FN**     | **TN**      | **FP**      | **Total**           | **TPR**                        | **FPR**                        | **Score**                         |
+| --------------------- | ---------- | ---------- | ----------- | ----------- | ------------------- | ------------------------------ | ------------------------------ | --------------------------------- |
+| **94:Code injection** | 4          | 2          | 38          | 15          | 59                  | 0.6666666666666670             | 0.2830188679245280             | 0.38364779874213800               |
+|                       | Total TP:4 | Total FN:2 | Total TN:38 | Total FP:15 | Total Test Cases:59 | Average TPR:0.6666666666666666 | Average FPR:0.2830188679245283 | Average Score:0.38364779874213834 |
 
 ## LGTM++
 
-The scorecard is in the repository labeled `LGTM++ over Packages.csv`. The false positive rate is 0.12, the true positive rate is 0.66, and the corresponding score is 0.54. The query used are in the json `LGTM++.json` and is `customCodeInjection2.ql`.
+The scorecard is in the repository labeled `LGTM++ over Packages.csv`. The false positive rate is 0.10, the true positive rate is 0.66, and the corresponding score is 0.56. The query used are in the json `LGTM++.json` and is `customCodeInjection2.ql`.
 
-| **CWE**               | **TP**     | **FN**     | **TN**      | **FP**     | **Total**           | **TPR**                        | **FPR**                         | **Score**                        |
-| --------------------- | ---------- | ---------- | ----------- | ---------- | ------------------- | ------------------------------ | ------------------------------- | -------------------------------- |
-| **94:Code injection** | 4          | 2          | 43          | 6          | 55                  | 0.6666666666666670             | 0.12244897959183700             | 0.5442176870748300               |
-|                       | Total TP:4 | Total FN:2 | Total TN:43 | Total FP:6 | Total Test Cases:55 | Average TPR:0.6666666666666666 | Average FPR:0.12244897959183673 | Average Score:0.5442176870748299 |
-
-
+| **CWE**               | **TP**     | **FN**     | **TN**      | **FP**     | **Total**           | **TPR**                        | **FPR**                         | **Score**            |
+| --------------------- | ---------- | ---------- | ----------- | ---------- | ------------------- | ------------------------------ | ------------------------------- | -------------------- |
+| **94:Code injection** | 4          | 2          | 43          | 5          | 54                  | 0.6666666666666670             | 0.10416666666666700             | 0.5625               |
+|                       | Total TP:4 | Total FN:2 | Total TN:43 | Total FP:5 | Total Test Cases:54 | Average TPR:0.6666666666666666 | Average FPR:0.10416666666666667 | Average Score:0.5625 |
 
 ## SinkFinder
 
