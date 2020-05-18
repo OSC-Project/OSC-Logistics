@@ -30,7 +30,12 @@ Each tool was scored using our benchmark's scorecard generator process. This is 
 
 **Recall formulas for the rates**
 
+true positive rate = TP / (TP+FN)
+false positive rate = FP / (FP + TN)
+
 **How do we count, no duplicates**
+
+Each query result is counted and calculated. If multiple queries are run, results are found and each query will only count if it is different from the previous results.
 
 ## LGTM
 
