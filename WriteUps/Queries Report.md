@@ -3,7 +3,7 @@
 This report shows the results of the LGTM query set versus our LGTM++ query set. The SinkFinder's results are also included.
 
 ## Results
-![](./Tools_over_Packages.png)
+![](./TOPackages.png)
 
 The tools being used are our additional queries (LGTM++), the built in queries from codeQL (LGTM), and the SinkFinder we've developed previously. The included packages are:
 
