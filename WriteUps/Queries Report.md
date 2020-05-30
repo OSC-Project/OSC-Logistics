@@ -16,6 +16,7 @@ In total, there are therefore 50 benchmarks.
 
 ### Queries
 
+
 #### Classic Sink Finder
 
 AST pattern matching for eval and the obfuscated variants. Roughly 10 patterns. 
@@ -31,8 +32,14 @@ List of queries included.
 This is not a superset of LGTM. It is a replacement.
 
 list of queries included
-- `customCodeInjection.ql` - Our custom query for finding eval.
-- `customCodeInjection2.ql` - a variant of the previous query.
+- `customCodeInjection.ql` - Our custom query for finding direct call to eval.
+- `customCodeInjection2.ql` - Query designed with the parameters to look for direct call to "eval". This is accomplished by requesting the CodeQL Database for a call expression such that the callee name is "eval". This query is useful because direct calls to eval will be catched by this query. <br>  
+- `customEvalCallApply.ql` - Query designed with the capabilities to detect indirect ways to call "eval". The specific pattern for this query is to detect the usage of an object that contains eval and that utilizes it via the built-in “.call” and “.apply” functions. This is useful because these are popular functions that can be susceptible to improper code injection. <br>    
+- `customEvalComma.ql` - The purpose of this query is that it specializes in finding indirect calls to ‘eval’ through a comma expression. The example that this query would trigger would be an expression that follows the structure: `(1, eval)(data);`. This query is very useful for finding that particular variant of code injection through eval. <br> 
+- `customEvalProperty` - This query is designed to detect sinks within vulnerable code that uses array-like property access. The example that this query would trigger would be an expression that follows the structure: `obj[‘eval’](data);` This is useful because this pattern is not always detected by our other queries. <br>  
+- `customEvalWindow.ql` - The purpose of this query is to detect code injection through the usage of the global window in JavaScript.This query does not suggest that there is always a vulnerability but instead that there is a potential vulnerability when accessing the global window. This query is useful because this pattern is unique and would not always be catched by our other queries. An example for vulnerable code that would trigger this query would be in the form of window[“eval”].call(window, data). <br> 
+- `customEvalFunctionProp.ql` - This query is designed to detect code injection through returning a function.apply(). The case for this query would be in the form of: `return Function(keys.join(‘,’), ‘return ‘ + unparse(node)).apply(null, vals);` This query is special because it specifically tackles injections through the domain of returning functions. <br> 
+
 
 LGTM++ finds the save vulnerabilities as the default LGTM
 
