@@ -12,14 +12,13 @@ The tools being used are our additional queries (LGTM++), the built in queries f
 
 In total, there are therefore 50 benchmarks. 
 
-**Bottom line**: LGTM++ has more expressive power than LGTM. Advantage to LGTM++ with a high true positive rate. Not all queries that were in SinkFinder have been ported over (Roughly: 5 in 11 were ported). 
+**Bottom line**: LGTM++ has more expressive power than LGTM. Advantage to LGTM++ with a high true positive rate. Not all queries that were in SinkFinder have been ported over (6 in 10 were ported). 
 
 ### Queries
 
-
 #### Classic Sink Finder
 
-AST pattern matching for eval and the obfuscated variants. Roughly 10 patterns. 
+AST pattern matching for eval and the obfuscated variants. 10 patterns.  
 
 
 #### LGTM
